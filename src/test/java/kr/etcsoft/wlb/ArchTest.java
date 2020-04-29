@@ -1,0 +1,29 @@
+package kr.etcsoft.wlb;
+
+import com.tngtech.archunit.core.domain.JavaClasses;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
+import com.tngtech.archunit.core.importer.ImportOption;
+import org.junit.jupiter.api.Test;
+
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
+
+class ArchTest {
+
+    @Test
+    void servicesAndRepositoriesShouldNotDependOnWebLayer() {
+
+        JavaClasses importedClasses = new ClassFileImporter()
+            .withImportOption(ImportOption.Predefined.DO_NOT_INCLUDE_TESTS)
+            .importPackages("kr.etcsoft.wlb");
+
+        noClasses()
+            .that()
+                .resideInAnyPackage("kr.etcsoft.wlb.service..")
+            .or()
+                .resideInAnyPackage("kr.etcsoft.wlb.repository..")
+            .should().dependOnClassesThat()
+                .resideInAnyPackage("..kr.etcsoft.wlb.web..")
+        .because("Services and repositories should not depend on web layer")
+        .check(importedClasses);
+    }
+}
