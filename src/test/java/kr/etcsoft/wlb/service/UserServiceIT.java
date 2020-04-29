@@ -3,7 +3,6 @@ package kr.etcsoft.wlb.service;
 import kr.etcsoft.wlb.WlbApp;
 import kr.etcsoft.wlb.config.Constants;
 import kr.etcsoft.wlb.domain.User;
-import kr.etcsoft.wlb.repository.search.UserSearchRepository;
 import kr.etcsoft.wlb.repository.UserRepository;
 import kr.etcsoft.wlb.service.dto.UserDTO;
 
@@ -27,9 +26,6 @@ import java.util.Optional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -56,14 +52,6 @@ public class UserServiceIT {
 
     @Autowired
     private UserService userService;
-
-    /**
-     * This repository is mocked in the kr.etcsoft.wlb.repository.search test package.
-     *
-     * @see kr.etcsoft.wlb.repository.search.UserSearchRepositoryMockConfiguration
-     */
-    @Autowired
-    private UserSearchRepository mockUserSearchRepository;
 
     @Autowired
     private AuditingHandler auditingHandler;
@@ -178,9 +166,6 @@ public class UserServiceIT {
         userService.removeNotActivatedUsers();
         users = userRepository.findAllByActivatedIsFalseAndActivationKeyIsNotNullAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
         assertThat(users).isEmpty();
-
-        // Verify Elasticsearch mock
-        verify(mockUserSearchRepository, times(1)).delete(user);
     }
 
     @Test
@@ -197,9 +182,6 @@ public class UserServiceIT {
         userService.removeNotActivatedUsers();
         Optional<User> maybeDbUser = userRepository.findById(dbUser.getId());
         assertThat(maybeDbUser).contains(dbUser);
-
-        // Verify Elasticsearch mock
-        verify(mockUserSearchRepository, never()).delete(user);
     }
 
     @Test

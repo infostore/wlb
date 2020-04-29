@@ -11,15 +11,9 @@
       "error": "오류"
     },
     "indicator": {
-      "binders": "Message broker",
-      "discoveryComposite": "Discovery Composite",
-      "refreshScope": "Microservice Refresh Scope",
-      "clientConfigServer": "Microservice Config Server",
-      "hystrix": "Hystrix",
       "diskSpace": "디스크 공간",
       "mail": "이메일",
       "ping": "Application",
-      "elasticsearch": "Elasticsearch",
       "db": "데이터베이스"
     },
     "table": {

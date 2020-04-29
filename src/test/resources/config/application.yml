@@ -13,13 +13,6 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-eureka:
-  client:
-    enabled: false
-  instance:
-    appname: wlb
-    instanceId: wlb:${spring.application.instance-id:${random.value}}
-
 spring:
   application:
     name: wlb
@@ -51,14 +44,6 @@ spring:
       hibernate.generate_statistics: false
       hibernate.hbm2ddl.auto: validate
       hibernate.jdbc.time_zone: UTC
-  data:
-    elasticsearch:
-      properties:
-        path:
-          home: build/elasticsearch
-        # See https://github.com/jhipster/generator-jhipster/issues/10302
-        node:
-          max_local_storage_nodes: 2
   liquibase:
     contexts: test
   mail:
@@ -112,23 +97,14 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: ZTU1ODNmNWRjZjI3NGZhNjMzZWQ1NjZkZmNmNDFjYzU1ZmViMzg3ZDQwYTY2YjBiMzc0OTMzZjY5NzI0ZGVhNjc1OGUxNWUzMDc3MDU2YWRiZGY1MTczODBiYWQxY2ViOWRjMzk5NTA3MTI3OWRkNTA1YTNmMTFkNWJhMzc5ZGI=
+        base64-secret: NjhlYzc5NjQ1OTkxZmQ2MWFkMzdhZTZhYjAyMjc5Mzk5NWM1N2UxNjE3M2ZlMjVlOGI4NzljY2IwY2IwMTVmN2U2ZjI0MGQzNDQ0ZWJhNGFhM2VlYWZhYzJiZTUzMDY1ODU3YzMwMzllY2JhNzc3NzRhZGJiNTdjN2Y3MTNiMmI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
   metrics:
     logs: # Reports metrics in the logs
       enabled: true
       report-frequency: 60 # in seconds
-kafka:
-  bootstrap-servers: localhost:9092
-  consumer:
-    key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    group.id: wlb
-    auto.offset.reset: earliest
-  producer:
-    key.serializer: org.apache.kafka.common.serialization.StringSerializer
-    value.serializer: org.apache.kafka.common.serialization.StringSerializer
+
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

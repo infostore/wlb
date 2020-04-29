@@ -19,18 +19,6 @@ logging:
     io.github.jhipster: DEBUG
     kr.etcsoft.wlb: DEBUG
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
-
-management:
-  health:
-    elasticsearch:
-      enabled: false
-
 spring:
   profiles:
     active: dev
@@ -70,11 +58,6 @@ spring:
       hibernate.cache.hazelcast.instance_name: wlb
       hibernate.cache.use_minimal_puts: true
       hibernate.cache.hazelcast.use_lite_member: true
-  data:
-    elasticsearch:
-      properties:
-        path:
-          home: build/elasticsearch
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -87,15 +70,6 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
-  sleuth:
-    sampler:
-      probability: 1 # report 100% of traces
-  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-    base-url: http://localhost:9411
-    enabled: false
-    locator:
-      discovery:
-        enabled: true
 
 server:
   port: 8080
@@ -107,13 +81,6 @@ server:
 # ===================================================================
 
 jhipster:
-  gateway:
-    rate-limiting:
-      enabled: false
-      limit: 100000
-      duration-in-seconds: 3600
-    authorized-microservices-endpoints: # Access Control Policy, if left empty for a route, all endpoints will be accessible
-      app1: /api,/v2/api-docs # recommended dev configuration
   cache: # Cache configuration
     hazelcast: # Hazelcast distributed cache
       time-to-live-seconds: 3600
@@ -134,7 +101,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: ZTU1ODNmNWRjZjI3NGZhNjMzZWQ1NjZkZmNmNDFjYzU1ZmViMzg3ZDQwYTY2YjBiMzc0OTMzZjY5NzI0ZGVhNjc1OGUxNWUzMDc3MDU2YWRiZGY1MTczODBiYWQxY2ViOWRjMzk5NTA3MTI3OWRkNTA1YTNmMTFkNWJhMzc5ZGI=
+        base64-secret: NjhlYzc5NjQ1OTkxZmQ2MWFkMzdhZTZhYjAyMjc5Mzk5NWM1N2UxNjE3M2ZlMjVlOGI4NzljY2IwY2IwMTVmN2U2ZjI0MGQzNDQ0ZWJhNGFhM2VlYWZhYzJiZTUzMDY1ODU3YzMwMzllY2JhNzc3NzRhZGJiNTdjN2Y3MTNiMmI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

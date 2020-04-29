@@ -19,13 +19,6 @@ logging:
     io.github.jhipster: INFO
     kr.etcsoft.wlb: INFO
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
-
 management:
   metrics:
     export:
@@ -49,13 +42,6 @@ spring:
   jpa:
     database-platform: io.github.jhipster.domain.util.FixedPostgreSQL10Dialect
     show-sql: false
-  data:
-    jest:
-      uri: http://localhost:9200
-  # see https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-nosql.html#boot-features-connecting-to-elasticsearch-jest
-  elasticsearch:
-    rest:
-      uris: http://localhost:9200
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
@@ -66,15 +52,6 @@ spring:
     password:
   thymeleaf:
     cache: true
-  sleuth:
-    sampler:
-      probability: 1 # report 100% of traces
-  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-    base-url: http://localhost:9411
-    enabled: false
-    locator:
-      discovery:
-        enabled: true
 
 # ===================================================================
 # To enable TLS in production, generate a certificate using:
@@ -109,11 +86,6 @@ server:
 # ===================================================================
 
 jhipster:
-  gateway:
-    rate-limiting:
-      enabled: false
-    authorized-microservices-endpoints: # Access Control Policy, if left empty for a route, all endpoints will be accessible
-      app1: /api # recommended prod configuration
   http:
     cache: # Used by the CachingHttpHeadersFilter
       timeToLiveInDays: 1461
@@ -133,7 +105,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: ZTU1ODNmNWRjZjI3NGZhNjMzZWQ1NjZkZmNmNDFjYzU1ZmViMzg3ZDQwYTY2YjBiMzc0OTMzZjY5NzI0ZGVhNjc1OGUxNWUzMDc3MDU2YWRiZGY1MTczODBiYWQxY2ViOWRjMzk5NTA3MTI3OWRkNTA1YTNmMTFkNWJhMzc5ZGI=
+        base64-secret: NjhlYzc5NjQ1OTkxZmQ2MWFkMzdhZTZhYjAyMjc5Mzk5NWM1N2UxNjE3M2ZlMjVlOGI4NzljY2IwY2IwMTVmN2U2ZjI0MGQzNDQ0ZWJhNGFhM2VlYWZhYzJiZTUzMDY1ODU3YzMwMzllY2JhNzc3NzRhZGJiNTdjN2Y3MTNiMmI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
