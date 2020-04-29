@@ -29,8 +29,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="wlbApp.issue.description" for="field_description">Description</label>
-                    <textarea class="form-control" name="description" id="field_description"
-                              formControlName="description"></textarea>
+<!--                    <textarea class="form-control" name="description" id="field_description"-->
+<!--                              formControlName="description"></textarea>-->
+
+                    <div [ngxSummernote]="config" id="field_description"
+                         formControlName="description">
+                    </div>
                 </div>
 
                 <div class="form-group">

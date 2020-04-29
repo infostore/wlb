@@ -40,6 +40,27 @@ export class IssueUpdateComponent implements OnInit {
     milestoneId: []
   });
 
+  config: any = {
+    height: 300,
+    placeholder: 'your write here',
+    spellCheck: true,
+    dialogsInBody: true,
+    dialogsFade: false,
+    disableDragAndDrop: false,
+    tooltip: false,
+    toolbar: [
+      ['misc', ['codeview', 'undo', 'redo']],
+      ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+      ['para', ['style', 'ul', 'ol', 'paragraph', 'height']],
+      ['insert', ['table', 'hr']]
+    ],
+    popover: {
+      image: [],
+      link: [],
+      air: []
+    }
+  };
+
   constructor(
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
