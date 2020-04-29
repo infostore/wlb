@@ -1,0 +1,62 @@
+entity Project {
+    name String required unique maxlength(100),
+    description TextBlob
+}
+
+entity Milestone {
+    name String required maxlength(100),
+    description TextBlob,
+    milestoneStatus MilestoneStatus,
+    dueDate Instant
+}
+
+enum MilestoneStatus {
+    OPEN, CLOSED
+}
+
+entity Issue {
+    name String required maxlength(100),
+    description TextBlob,
+    issueType IssueType required,
+    issueStatus IssueStatus required,
+    priority Priority required,
+    resolution Resolution,
+    dueDate Instant
+}
+
+enum IssueType {
+    ISSUE, TASK, BUG
+}
+
+enum IssueStatus {
+    NEW, OPEN, CLOSED
+}
+
+enum Priority {
+    LOWEST, LOW, MEDIUM, HIGH, HIGHEST
+}
+
+enum Resolution {
+    DONE, DUPLICATE, REJECT
+}
+
+entity Comment {
+    description TextBlob
+}
+
+relationship OneToMany {
+    Issue{assignee(name)} to User,
+    Issue{watcher(name)} to User,
+    Issue{comment} to Comment
+}
+
+relationship ManyToOne {
+    Issue{project(name)} to Project,
+    Issue{milestone(name)} to Milestone,
+    Milestone{project(name)} to Project
+}
+
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass
+filter Issue

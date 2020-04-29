@@ -1,0 +1,12 @@
+{
+  "wlbApp": {
+    "Priority": {
+      "null": "",
+      "LOWEST": "LOWEST",
+      "LOW": "LOW",
+      "MEDIUM": "MEDIUM",
+      "HIGH": "HIGH",
+      "HIGHEST": "HIGHEST"
+    }
+  }
+}

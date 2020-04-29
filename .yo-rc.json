@@ -20,7 +20,7 @@
     "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": false,
-    "buildTool": "gradle",
+    "buildTool": "maven",
     "enableSwaggerCodegen": true,
     "jwtSecretKey": "NjhlYzc5NjQ1OTkxZmQ2MWFkMzdhZTZhYjAyMjc5Mzk5NWM1N2UxNjE3M2ZlMjVlOGI4NzljY2IwY2IwMTVmN2U2ZjI0MGQzNDQ0ZWJhNGFhM2VlYWZhYzJiZTUzMDY1ODU3YzMwMzllY2JhNzc3NzRhZGJiNTdjN2Y3MTNiMmI=",
     "embeddableLaunchScript": false,
@@ -39,5 +39,9 @@
     "nativeLanguage": "en",
     "languages": ["en", "ko"],
     "blueprints": []
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "custom",
+    "auditPage": true
   }
 }
