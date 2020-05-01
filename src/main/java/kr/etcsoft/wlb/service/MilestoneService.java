@@ -62,15 +62,20 @@ public class MilestoneService {
     public Page<MilestoneDTO> findAll(MilestoneDTO milestoneDTO, Pageable pageable) {
         log.debug("Request to get all Milestones");
 
-        if (pageable.getSort().isUnsorted()) {
-            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(DEFAULT_DIRECTION, "dueDate"));
-        }
+        pageable = setDefaultSort(pageable);
 
         return milestoneRepository.findByProjectId(milestoneDTO.getProjectId(), pageable)
             .map(milestoneMapper::toDto);
 //
 //        return milestoneRepository.findAll(pageable)
 //            .map(milestoneMapper::toDto);
+    }
+
+    private Pageable setDefaultSort(Pageable pageable) {
+        if (pageable.getSort().isUnsorted()) {
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(DEFAULT_DIRECTION, "dueDate"));
+        }
+        return pageable;
     }
 
     /**
