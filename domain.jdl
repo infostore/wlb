@@ -11,7 +11,9 @@ entity Milestone {
 }
 
 enum MilestoneStatus {
-    OPEN, CLOSED
+    NEW,
+    OPEN,
+    CLOSED
 }
 
 entity Issue {
@@ -29,7 +31,9 @@ enum IssueType {
 }
 
 enum IssueStatus {
-    NEW, OPEN, CLOSED
+    NEW,
+    OPEN,
+    CLOSED
 }
 
 enum Priority {
@@ -37,23 +41,65 @@ enum Priority {
 }
 
 enum Resolution {
-    DONE, DUPLICATE, REJECT
+    DONE,
+    DUPLICATE,
+    REJECT
 }
 
 entity Comment {
     description TextBlob
 }
 
+entity LabelGroup {
+    name String required unique maxlength(10)
+}
+
+entity Label {
+    name String required unique maxlength(10)
+}
+
+entity IssueLabel {}
+
+entity IssueAssignee {}
+
+entity IssueWatcher {}
+
+entity Attachment {
+    name String required,
+    path String required
+}
+
+entity IssueAttachment {
+}
+
+entity ProjectActivity {
+    activity String required maxlength(4000)
+}
+
+entity IssueActivity {
+    activity String required maxlength(4000)
+}
+
+
 relationship OneToMany {
-    Issue{assignee(name)} to User,
-    Issue{watcher(name)} to User,
-    Issue{comment} to Comment
+    Issue{assignee} to IssueAssignee,
+    Issue{watcher} to IssueWatcher,
+    Issue{comment} to Comment,
+    Issue{issueLabel} to IssueLabel,
+    Label{issueLabel} to IssueLabel,
+    Issue{issueAttachment} to IssueAttachment,
+    Project{projectActivity} to ProjectActivity,
+    Issue{issueActivity} to IssueActivity
 }
 
 relationship ManyToOne {
+    IssueAssignee{user} to User,
+    IssueWatcher{user} to User,
+    IssueAttachment{attachment} to Attachment,
     Issue{project(name)} to Project,
     Issue{milestone(name)} to Milestone,
-    Milestone{project(name)} to Project
+    Milestone{project(name)} to Project,
+    Label{labelGroup(name)} to LabelGroup
 }
 
 dto * with mapstruct
