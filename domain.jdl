@@ -46,6 +46,7 @@ enum Resolution {
     REJECT
 }
 
+@skipClient
 entity Comment {
     description TextBlob
 }
@@ -58,10 +59,13 @@ entity Label {
     name String required unique maxlength(10)
 }
 
+@skipClient
 entity IssueLabel {}
 
+@skipClient
 entity IssueAssignee {}
 
+@skipClient
 entity IssueWatcher {}
 
 entity Attachment {
@@ -69,13 +73,16 @@ entity Attachment {
     path String required
 }
 
+@skipClient
 entity IssueAttachment {
 }
 
+@skipClient
 entity ProjectActivity {
     activity String required maxlength(4000)
 }
 
+@skipClient
 entity IssueActivity {
     activity String required maxlength(4000)
 }
