@@ -1,24 +1,22 @@
 package kr.etcsoft.wlb.web.rest;
 
-import kr.etcsoft.wlb.service.IssueService;
-import kr.etcsoft.wlb.web.rest.errors.BadRequestAlertException;
-import kr.etcsoft.wlb.service.dto.IssueDTO;
-import kr.etcsoft.wlb.service.dto.IssueCriteria;
-import kr.etcsoft.wlb.service.IssueQueryService;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import kr.etcsoft.wlb.service.IssueService;
+import kr.etcsoft.wlb.service.dto.IssueCriteria;
+import kr.etcsoft.wlb.service.dto.IssueDTO;
+import kr.etcsoft.wlb.web.rest.errors.BadRequestAlertException;
+import kr.etcsoft.wlb.web.rest.vm.IssueVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -42,11 +40,8 @@ public class IssueResource {
 
     private final IssueService issueService;
 
-    private final IssueQueryService issueQueryService;
-
-    public IssueResource(IssueService issueService, IssueQueryService issueQueryService) {
+    public IssueResource(IssueService issueService) {
         this.issueService = issueService;
-        this.issueQueryService = issueQueryService;
     }
 
     /**
@@ -93,27 +88,15 @@ public class IssueResource {
      * {@code GET  /issues} : get all the issues.
      *
      * @param pageable the pagination information.
-     * @param criteria the criteria which the requested entities should match.
+     * @param issueVM the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of issues in body.
      */
     @GetMapping("/issues")
-    public ResponseEntity<List<IssueDTO>> getAllIssues(IssueCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get Issues by criteria: {}", criteria);
-        Page<IssueDTO> page = issueQueryService.findByCriteria(criteria, pageable);
+    public ResponseEntity<List<IssueDTO>> getAllIssues(IssueVM issueVM, Pageable pageable) {
+        log.debug("REST request to get Issues by criteria: {}", issueVM);
+        Page<IssueDTO> page = issueService.findAll(issueVM, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    /**
-     * {@code GET  /issues/count} : count all the issues.
-     *
-     * @param criteria the criteria which the requested entities should match.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
-     */
-    @GetMapping("/issues/count")
-    public ResponseEntity<Long> countIssues(IssueCriteria criteria) {
-        log.debug("REST request to count Issues by criteria: {}", criteria);
-        return ResponseEntity.ok().body(issueQueryService.countByCriteria(criteria));
     }
 
     /**

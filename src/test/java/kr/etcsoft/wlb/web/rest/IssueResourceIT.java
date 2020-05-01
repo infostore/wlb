@@ -14,8 +14,6 @@ import kr.etcsoft.wlb.repository.IssueRepository;
 import kr.etcsoft.wlb.service.IssueService;
 import kr.etcsoft.wlb.service.dto.IssueDTO;
 import kr.etcsoft.wlb.service.mapper.IssueMapper;
-import kr.etcsoft.wlb.service.dto.IssueCriteria;
-import kr.etcsoft.wlb.service.IssueQueryService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +24,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
+
 import javax.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -79,9 +77,6 @@ public class IssueResourceIT {
 
     @Autowired
     private IssueService issueService;
-
-    @Autowired
-    private IssueQueryService issueQueryService;
 
     @Autowired
     private EntityManager em;
@@ -272,7 +267,7 @@ public class IssueResourceIT {
             .andExpect(jsonPath("$.[*].resolution").value(hasItem(DEFAULT_RESOLUTION.toString())))
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getIssue() throws Exception {
