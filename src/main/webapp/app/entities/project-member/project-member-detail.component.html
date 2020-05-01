@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="projectMember">
+            <h2><span jhiTranslate="wlbApp.projectMember.detail.title">Project Member</span> {{ projectMember.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlbApp.projectMember.role">Role</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'wlbApp.Role.' + projectMember.role }}">{{ projectMember.role }}</span>
+                </dd>
+                <dt><span jhiTranslate="wlbApp.projectMember.user">User</span></dt>
+                <dd>
+                    {{ projectMember.userId }}
+                </dd>
+                <dt><span jhiTranslate="wlbApp.projectMember.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="projectMember.projectId">
+                        <a [routerLink]="['/project', projectMember.projectId, 'view']">{{ projectMember.projectId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project-member', projectMember.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

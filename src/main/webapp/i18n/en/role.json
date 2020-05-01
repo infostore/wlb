@@ -1,0 +1,11 @@
+{
+  "wlbApp": {
+    "Role": {
+      "null": "",
+      "MANAGER": "MANAGER",
+      "DEVELOPER": "DEVELOPER",
+      "REPORTER": "REPORTER",
+      "GUEST": "GUEST"
+    }
+  }
+}

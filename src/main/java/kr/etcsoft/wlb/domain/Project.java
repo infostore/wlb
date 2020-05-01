@@ -39,6 +39,10 @@ public class Project implements Serializable {
 
     @OneToMany(mappedBy = "project")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ProjectMember> projectMembers = new HashSet<>();
+
+    @OneToMany(mappedBy = "project")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProjectActivity> projectActivities = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -74,6 +78,31 @@ public class Project implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<ProjectMember> getProjectMembers() {
+        return projectMembers;
+    }
+
+    public Project projectMembers(Set<ProjectMember> projectMembers) {
+        this.projectMembers = projectMembers;
+        return this;
+    }
+
+    public Project addProjectMember(ProjectMember projectMember) {
+        this.projectMembers.add(projectMember);
+        projectMember.setProject(this);
+        return this;
+    }
+
+    public Project removeProjectMember(ProjectMember projectMember) {
+        this.projectMembers.remove(projectMember);
+        projectMember.setProject(null);
+        return this;
+    }
+
+    public void setProjectMembers(Set<ProjectMember> projectMembers) {
+        this.projectMembers = projectMembers;
     }
 
     public Set<ProjectActivity> getProjectActivities() {

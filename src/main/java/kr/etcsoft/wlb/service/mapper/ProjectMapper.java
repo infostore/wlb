@@ -13,6 +13,8 @@ import org.mapstruct.*;
 public interface ProjectMapper extends EntityMapper<ProjectDTO, Project> {
 
 
+    @Mapping(target = "projectMembers", ignore = true)
+    @Mapping(target = "removeProjectMember", ignore = true)
     @Mapping(target = "projectActivities", ignore = true)
     @Mapping(target = "removeProjectActivity", ignore = true)
     Project toEntity(ProjectDTO projectDTO);

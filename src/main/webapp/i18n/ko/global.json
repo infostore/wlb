@@ -20,6 +20,7 @@
         "issueAttachment": "Issue Attachment",
         "projectActivity": "Project Activity",
         "issueActivity": "Issue Activity",
+        "projectMember": "Project Member",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

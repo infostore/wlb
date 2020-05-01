@@ -20,6 +20,12 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "otherEntityName": "projectMember",
+            "otherEntityRelationshipName": "project",
+            "relationshipName": "projectMember"
+        },
+        {
+            "relationshipType": "one-to-many",
             "otherEntityName": "projectActivity",
             "otherEntityRelationshipName": "project",
             "relationshipName": "projectActivity"
