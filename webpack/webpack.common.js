@@ -61,7 +61,7 @@ module.exports = (options) => ({
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery',
-            'jQuery': 'jquery'
+            jQuery: 'jquery'
         }),
         new webpack.DefinePlugin({
             'process.env': {
