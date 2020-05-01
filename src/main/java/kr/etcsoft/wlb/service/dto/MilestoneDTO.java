@@ -11,7 +11,7 @@ import kr.etcsoft.wlb.domain.enumeration.MilestoneStatus;
  * A DTO for the {@link kr.etcsoft.wlb.domain.Milestone} entity.
  */
 public class MilestoneDTO implements Serializable {
-    
+
     private Long id;
 
     @NotNull
@@ -25,11 +25,11 @@ public class MilestoneDTO implements Serializable {
 
     private Instant dueDate;
 
-
+    @NotNull
     private Long projectId;
 
     private String projectName;
-    
+
     public Long getId() {
         return id;
     }

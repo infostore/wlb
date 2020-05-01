@@ -8,11 +8,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Optional;
+
+import static org.springframework.data.domain.Sort.DEFAULT_DIRECTION;
 
 /**
  * Service Implementation for managing {@link Milestone}.
@@ -48,14 +53,24 @@ public class MilestoneService {
     /**
      * Get all the milestones.
      *
+     *
+     * @param milestoneDTO
      * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-    public Page<MilestoneDTO> findAll(Pageable pageable) {
+    public Page<MilestoneDTO> findAll(MilestoneDTO milestoneDTO, Pageable pageable) {
         log.debug("Request to get all Milestones");
-        return milestoneRepository.findAll(pageable)
+
+        if (pageable.getSort().isUnsorted()) {
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(DEFAULT_DIRECTION, "dueDate"));
+        }
+
+        return milestoneRepository.findByProjectId(milestoneDTO.getProjectId(), pageable)
             .map(milestoneMapper::toDto);
+//
+//        return milestoneRepository.findAll(pageable)
+//            .map(milestoneMapper::toDto);
     }
 
     /**

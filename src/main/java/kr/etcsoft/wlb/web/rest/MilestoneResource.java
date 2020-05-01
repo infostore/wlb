@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -91,9 +90,9 @@ public class MilestoneResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of milestones in body.
      */
     @GetMapping("/milestones")
-    public ResponseEntity<List<MilestoneDTO>> getAllMilestones(Pageable pageable) {
+    public ResponseEntity<List<MilestoneDTO>> getAllMilestones(MilestoneDTO milestoneDTO, Pageable pageable) {
         log.debug("REST request to get a page of Milestones");
-        Page<MilestoneDTO> page = milestoneService.findAll(pageable);
+        Page<MilestoneDTO> page = milestoneService.findAll(milestoneDTO, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
