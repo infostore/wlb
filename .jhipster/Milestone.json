@@ -1,0 +1,48 @@
+{
+    "name": "Milestone",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "milestoneStatus",
+            "fieldType": "MilestoneStatus",
+            "fieldValues": "NEW,OPEN,CLOSED"
+        },
+        {
+            "fieldName": "dueDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "milestone",
+            "relationshipName": "project",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200501052200",
+    "entityTableName": "milestone",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

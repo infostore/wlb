@@ -1,0 +1,23 @@
+{
+  "wlbApp": {
+    "issueLabel": {
+      "home": {
+        "title": "Issue Labels",
+        "createLabel": "Create a new Issue Label",
+        "createOrEditLabel": "Create or edit a Issue Label",
+        "notFound": "No Issue Labels found"
+      },
+      "created": "A new Issue Label is created with identifier {{ param }}",
+      "updated": "A Issue Label is updated with identifier {{ param }}",
+      "deleted": "A Issue Label is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Issue Label {{ id }}?"
+      },
+      "detail": {
+        "title": "Issue Label"
+      },
+      "issue": "Issue",
+      "label": "Label"
+    }
+  }
+}

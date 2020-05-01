@@ -1,0 +1,10 @@
+{
+  "wlbApp": {
+    "IssueStatus": {
+      "null": "",
+      "NEW": "NEW",
+      "OPEN": "OPEN",
+      "CLOSED": "CLOSED"
+    }
+  }
+}

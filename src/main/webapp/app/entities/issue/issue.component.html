@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wlbApp.issue.home.title">Issues</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-issue" [routerLink]="['/issue/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="wlbApp.issue.home.createLabel">
+            Create a new Issue
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="issues?.length === 0">
+        <span jhiTranslate="wlbApp.issue.home.notFound">No issues found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="issues?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="wlbApp.issue.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="wlbApp.issue.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="issueType"><span jhiTranslate="wlbApp.issue.issueType">Issue Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="issueStatus"><span jhiTranslate="wlbApp.issue.issueStatus">Issue Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="priority"><span jhiTranslate="wlbApp.issue.priority">Priority</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="resolution"><span jhiTranslate="wlbApp.issue.resolution">Resolution</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dueDate"><span jhiTranslate="wlbApp.issue.dueDate">Due Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="projectName"><span jhiTranslate="wlbApp.issue.project">Project</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="milestoneName"><span jhiTranslate="wlbApp.issue.milestone">Milestone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let issue of issues ;trackBy: trackId">
+                    <td><a [routerLink]="['/issue', issue.id, 'view']">{{ issue.id }}</a></td>
+                    <td>{{ issue.name }}</td>
+                    <td>{{ issue.description }}</td>
+                    <td jhiTranslate="{{ 'wlbApp.IssueType.' + issue.issueType }}">{{ issue.issueType }}</td>
+                    <td jhiTranslate="{{ 'wlbApp.IssueStatus.' + issue.issueStatus }}">{{ issue.issueStatus }}</td>
+                    <td jhiTranslate="{{ 'wlbApp.Priority.' + issue.priority }}">{{ issue.priority }}</td>
+                    <td jhiTranslate="{{ 'wlbApp.Resolution.' + issue.resolution }}">{{ issue.resolution }}</td>
+                    <td>{{ issue.dueDate | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="issue.projectId">
+                            <a [routerLink]="['/project', issue.projectId , 'view']" >{{ issue.projectName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="issue.milestoneId">
+                            <a [routerLink]="['/milestone', issue.milestoneId , 'view']" >{{ issue.milestoneName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/issue', issue.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/issue', issue.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(issue)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="issues?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

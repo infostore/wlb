@@ -1,0 +1,41 @@
+{
+    "name": "Label",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "10"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "issueLabel",
+            "otherEntityRelationshipName": "label",
+            "relationshipName": "issueLabel"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "labelGroup",
+            "otherEntityRelationshipName": "label",
+            "relationshipName": "labelGroup",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200501052600",
+    "entityTableName": "label",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

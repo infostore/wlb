@@ -1,0 +1,23 @@
+{
+  "wlbApp": {
+    "issueActivity": {
+      "home": {
+        "title": "Issue Activities",
+        "createLabel": "Create a new Issue Activity",
+        "createOrEditLabel": "Create or edit a Issue Activity",
+        "notFound": "No Issue Activities found"
+      },
+      "created": "A new Issue Activity is created with identifier {{ param }}",
+      "updated": "A Issue Activity is updated with identifier {{ param }}",
+      "deleted": "A Issue Activity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Issue Activity {{ id }}?"
+      },
+      "detail": {
+        "title": "Issue Activity"
+      },
+      "activity": "Activity",
+      "issue": "Issue"
+    }
+  }
+}

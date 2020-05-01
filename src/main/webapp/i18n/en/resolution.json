@@ -1,0 +1,10 @@
+{
+  "wlbApp": {
+    "Resolution": {
+      "null": "",
+      "DONE": "DONE",
+      "DUPLICATE": "DUPLICATE",
+      "REJECT": "REJECT"
+    }
+  }
+}

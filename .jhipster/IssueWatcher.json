@@ -1,0 +1,31 @@
+{
+    "name": "IssueWatcher",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "issueWatcher",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "issue",
+            "otherEntityRelationshipName": "watcher",
+            "relationshipName": "issue",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200501052900",
+    "entityTableName": "issue_watcher",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

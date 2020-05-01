@@ -7,6 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "project": "Project",
+        "milestone": "Milestone",
+        "issue": "Issue",
+        "comment": "Comment",
+        "labelGroup": "Label Group",
+        "label": "Label",
+        "issueLabel": "Issue Label",
+        "issueAssignee": "Issue Assignee",
+        "issueWatcher": "Issue Watcher",
+        "attachment": "Attachment",
+        "issueAttachment": "Issue Attachment",
+        "projectActivity": "Project Activity",
+        "issueActivity": "Issue Activity",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

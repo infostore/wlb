@@ -1,0 +1,23 @@
+{
+  "wlbApp": {
+    "issueAttachment": {
+      "home": {
+        "title": "Issue Attachments",
+        "createLabel": "Create a new Issue Attachment",
+        "createOrEditLabel": "Create or edit a Issue Attachment",
+        "notFound": "No Issue Attachments found"
+      },
+      "created": "A new Issue Attachment is created with identifier {{ param }}",
+      "updated": "A Issue Attachment is updated with identifier {{ param }}",
+      "deleted": "A Issue Attachment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Issue Attachment {{ id }}?"
+      },
+      "detail": {
+        "title": "Issue Attachment"
+      },
+      "attachment": "Attachment",
+      "issue": "Issue"
+    }
+  }
+}

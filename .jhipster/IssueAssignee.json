@@ -1,0 +1,31 @@
+{
+    "name": "IssueAssignee",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "issueAssignee",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "issue",
+            "otherEntityRelationshipName": "assignee",
+            "relationshipName": "issue",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200501052800",
+    "entityTableName": "issue_assignee",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

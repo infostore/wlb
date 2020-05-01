@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="issueWatcher">
+            <h2><span jhiTranslate="wlbApp.issueWatcher.detail.title">Issue Watcher</span> {{ issueWatcher.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlbApp.issueWatcher.user">User</span></dt>
+                <dd>
+                    {{ issueWatcher.userId }}
+                </dd>
+                <dt><span jhiTranslate="wlbApp.issueWatcher.issue">Issue</span></dt>
+                <dd>
+                    <div *ngIf="issueWatcher.issueId">
+                        <a [routerLink]="['/issue', issueWatcher.issueId, 'view']">{{ issueWatcher.issueId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/issue-watcher', issueWatcher.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

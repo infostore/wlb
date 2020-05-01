@@ -1,0 +1,10 @@
+{
+  "wlbApp": {
+    "MilestoneStatus": {
+      "null": "",
+      "NEW": "NEW",
+      "OPEN": "OPEN",
+      "CLOSED": "CLOSED"
+    }
+  }
+}

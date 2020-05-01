@@ -1,0 +1,34 @@
+{
+    "name": "ProjectActivity",
+    "fields": [
+        {
+            "fieldName": "activity",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "4000"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "projectActivity",
+            "relationshipName": "project",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200501053200",
+    "entityTableName": "project_activity",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

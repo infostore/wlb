@@ -1,0 +1,30 @@
+{
+    "name": "Comment",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "issue",
+            "otherEntityRelationshipName": "comment",
+            "relationshipName": "issue",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200501052400",
+    "entityTableName": "comment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

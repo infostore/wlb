@@ -1,0 +1,115 @@
+{
+    "name": "Issue",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "issueType",
+            "fieldType": "IssueType",
+            "fieldValues": "ISSUE,TASK,BUG",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "issueStatus",
+            "fieldType": "IssueStatus",
+            "fieldValues": "NEW,OPEN,CLOSED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "Priority",
+            "fieldValues": "LOWEST,LOW,MEDIUM,HIGH,HIGHEST",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "resolution",
+            "fieldType": "Resolution",
+            "fieldValues": "DONE,DUPLICATE,REJECT"
+        },
+        {
+            "fieldName": "dueDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "issueAssignee",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "assignee"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "issueWatcher",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "watcher"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "comment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "issueLabel",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "issueLabel"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "issueAttachment",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "issueAttachment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "issueActivity",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "issueActivity"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "project",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "milestone",
+            "otherEntityRelationshipName": "issue",
+            "relationshipName": "milestone",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200501052300",
+    "entityTableName": "issue",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

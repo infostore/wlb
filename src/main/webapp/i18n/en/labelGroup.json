@@ -1,0 +1,22 @@
+{
+  "wlbApp": {
+    "labelGroup": {
+      "home": {
+        "title": "Label Groups",
+        "createLabel": "Create a new Label Group",
+        "createOrEditLabel": "Create or edit a Label Group",
+        "notFound": "No Label Groups found"
+      },
+      "created": "A new Label Group is created with identifier {{ param }}",
+      "updated": "A Label Group is updated with identifier {{ param }}",
+      "deleted": "A Label Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Label Group {{ id }}?"
+      },
+      "detail": {
+        "title": "Label Group"
+      },
+      "name": "Name"
+    }
+  }
+}

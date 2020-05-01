@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="issueLabel">
+            <h2><span jhiTranslate="wlbApp.issueLabel.detail.title">Issue Label</span> {{ issueLabel.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlbApp.issueLabel.issue">Issue</span></dt>
+                <dd>
+                    <div *ngIf="issueLabel.issueId">
+                        <a [routerLink]="['/issue', issueLabel.issueId, 'view']">{{ issueLabel.issueId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlbApp.issueLabel.label">Label</span></dt>
+                <dd>
+                    <div *ngIf="issueLabel.labelId">
+                        <a [routerLink]="['/label', issueLabel.labelId, 'view']">{{ issueLabel.labelId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/issue-label', issueLabel.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

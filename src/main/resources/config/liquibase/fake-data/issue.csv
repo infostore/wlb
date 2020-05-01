@@ -1,0 +1,11 @@
+id;name;description;issue_type;issue_status;priority;resolution;due_date
+1;partnerships function Shoes;../fake-data/blob/hipster.txt;TASK;CLOSED;LOW;DONE;2020-05-01T01:57:22
+2;compress program;../fake-data/blob/hipster.txt;TASK;OPEN;LOWEST;DONE;2020-04-30T17:51:01
+3;mindshare;../fake-data/blob/hipster.txt;TASK;CLOSED;HIGH;DUPLICATE;2020-04-30T19:14:09
+4;Armenia withdrawal Money Market Account;../fake-data/blob/hipster.txt;BUG;OPEN;LOW;REJECT;2020-05-01T02:58:42
+5;Cambridgeshire sexy Pula;../fake-data/blob/hipster.txt;BUG;OPEN;HIGHEST;REJECT;2020-04-30T21:55:53
+6;Tuvalu Cambridgeshire;../fake-data/blob/hipster.txt;BUG;NEW;LOW;DUPLICATE;2020-05-01T05:15:30
+7;Solutions Heard Island and McDonald Islands;../fake-data/blob/hipster.txt;TASK;NEW;LOW;REJECT;2020-04-30T13:54:47
+8;Berkshire navigate RAM;../fake-data/blob/hipster.txt;BUG;NEW;LOWEST;DUPLICATE;2020-05-01T00:31:22
+9;Industrial;../fake-data/blob/hipster.txt;TASK;CLOSED;MEDIUM;REJECT;2020-05-01T01:52:04
+10;Chips transmitting Mauritius;../fake-data/blob/hipster.txt;TASK;NEW;HIGHEST;REJECT;2020-04-30T09:39:08

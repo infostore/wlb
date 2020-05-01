@@ -1,0 +1,31 @@
+{
+    "name": "IssueLabel",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "issue",
+            "otherEntityRelationshipName": "issueLabel",
+            "relationshipName": "issue",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "label",
+            "otherEntityRelationshipName": "issueLabel",
+            "relationshipName": "label",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200501052700",
+    "entityTableName": "issue_label",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

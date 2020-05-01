@@ -1,0 +1,31 @@
+{
+    "name": "IssueAttachment",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "attachment",
+            "otherEntityRelationshipName": "issueAttachment",
+            "relationshipName": "attachment",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "issue",
+            "otherEntityRelationshipName": "issueAttachment",
+            "relationshipName": "issue",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200501053100",
+    "entityTableName": "issue_attachment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
