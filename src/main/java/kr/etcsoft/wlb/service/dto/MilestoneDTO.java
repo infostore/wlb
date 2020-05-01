@@ -25,7 +25,6 @@ public class MilestoneDTO implements Serializable {
 
     private Instant dueDate;
 
-    @NotNull
     private Long projectId;
 
     private String projectName;

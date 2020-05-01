@@ -7,6 +7,7 @@ import kr.etcsoft.wlb.service.dto.MilestoneDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import kr.etcsoft.wlb.web.rest.vm.MilestoneVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -90,9 +91,9 @@ public class MilestoneResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of milestones in body.
      */
     @GetMapping("/milestones")
-    public ResponseEntity<List<MilestoneDTO>> getAllMilestones(MilestoneDTO milestoneDTO, Pageable pageable) {
+    public ResponseEntity<List<MilestoneDTO>> getAllMilestones(MilestoneVM milestoneVM, Pageable pageable) {
         log.debug("REST request to get a page of Milestones");
-        Page<MilestoneDTO> page = milestoneService.findAll(milestoneDTO, pageable);
+        Page<MilestoneDTO> page = milestoneService.findAll(milestoneVM, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
