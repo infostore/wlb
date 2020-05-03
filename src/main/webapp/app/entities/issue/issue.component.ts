@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,11 +11,16 @@ import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { IssueService } from './issue.service';
 import { IssueDeleteDialogComponent } from './issue-delete-dialog.component';
 
+import { jqxButtonComponent } from 'jqwidgets-ng/jqxbuttons';
+
 @Component({
   selector: 'jhi-issue',
   templateUrl: './issue.component.html'
 })
 export class IssueComponent implements OnInit, OnDestroy {
+  @ViewChild('searchButton')
+  searchButton!: jqxButtonComponent;
+
   issues?: IIssue[];
   eventSubscriber?: Subscription;
   totalItems = 0;
@@ -112,4 +117,6 @@ export class IssueComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page;
   }
+
+  search($event: any): void {}
 }

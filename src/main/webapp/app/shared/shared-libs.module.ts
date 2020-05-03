@@ -8,6 +8,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxSummernoteModule } from 'ngx-summernote';
 
+import { jqxButtonModule } from 'jqwidgets-ng/jqxbuttons';
+
 @NgModule({
   exports: [
     FormsModule,
@@ -18,7 +20,8 @@ import { NgxSummernoteModule } from 'ngx-summernote';
     FontAwesomeModule,
     ReactiveFormsModule,
     TranslateModule,
-    NgxSummernoteModule
+    NgxSummernoteModule,
+    jqxButtonModule
   ]
 })
 export class WlbSharedLibsModule {}
