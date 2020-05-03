@@ -2,22 +2,31 @@
     <h2 id="page-heading">
         <span jhiTranslate="wlbApp.issue.home.title">Issues</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-issue" [routerLink]="['/issue/new']">
-            <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="wlbApp.issue.home.createLabel">
-            Create a new Issue
-            </span>
-        </button>
+<!--        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-issue" [routerLink]="['/issue/new']">-->
+<!--            <fa-icon icon="plus"></fa-icon>-->
+<!--            <span  jhiTranslate="wlbApp.issue.home.createLabel">-->
+<!--            Create a new Issue-->
+<!--            </span>-->
+<!--        </button>-->
     </h2>
 
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-3">
+            <jqxComboBox (onSelect)="projectOnSelect($event)"
+                         [width]="150" [height]="30" [selectedIndex]="0" [source]="projects" [displayMember]="'name'"
+                         [valueMember]="'id'">
+            </jqxComboBox>
         </div>
     </div>
 
-    <div>
-        <jqxButton #searchButton [width]="120" [height]="40" (onClick)="search($event)">
-            Button
+    <div class="row float-right">
+        <jqxButton #newButton [template]="'primary'" [width]="120" [routerLink]="['/issue/new']">
+            <fa-icon icon="plus"></fa-icon>
+            New
+        </jqxButton>
+        <jqxButton #searchButton [template]="'success'" [width]="120" (onClick)="search($event)">
+            <fa-icon icon="search"></fa-icon>
+            Search
         </jqxButton>
     </div>
 

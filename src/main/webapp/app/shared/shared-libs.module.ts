@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxSummernoteModule } from 'ngx-summernote';
 
 import { jqxButtonModule } from 'jqwidgets-ng/jqxbuttons';
+import { jqxComboBoxModule } from 'jqwidgets-ng/jqxcombobox';
 
 @NgModule({
   exports: [
@@ -21,7 +22,8 @@ import { jqxButtonModule } from 'jqwidgets-ng/jqxbuttons';
     ReactiveFormsModule,
     TranslateModule,
     NgxSummernoteModule,
-    jqxButtonModule
+    jqxButtonModule,
+    jqxComboBoxModule
   ]
 })
 export class WlbSharedLibsModule {}

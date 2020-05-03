@@ -7,6 +7,11 @@
   "cacheDirectories": [
     "node_modules"
   ],
+  "eslintConfig": {
+    "rules": {
+      "no-console": "off"
+    }
+  },
   "dependencies": {
     "@angular/common": "9.0.4",
     "@angular/compiler": "9.0.4",

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -17,10 +17,7 @@ import { jqxButtonComponent } from 'jqwidgets-ng/jqxbuttons';
   selector: 'jhi-issue',
   templateUrl: './issue.component.html'
 })
-export class IssueComponent implements OnInit, OnDestroy {
-  @ViewChild('searchButton')
-  searchButton!: jqxButtonComponent;
-
+export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
   issues?: IIssue[];
   eventSubscriber?: Subscription;
   totalItems = 0;
@@ -29,6 +26,17 @@ export class IssueComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+
+  @ViewChild('searchButton')
+  searchButton!: jqxButtonComponent;
+
+  @ViewChild('newButton')
+  newButton!: jqxButtonComponent;
+
+  projects: any = [
+    { id: 0, name: 'first' },
+    { id: 1, name: 'second' }
+  ];
 
   constructor(
     protected issueService: IssueService,
@@ -64,6 +72,8 @@ export class IssueComponent implements OnInit, OnDestroy {
     });
     this.registerChangeInIssues();
   }
+
+  ngAfterViewInit(): void {}
 
   ngOnDestroy(): void {
     if (this.eventSubscriber) {
@@ -118,5 +128,13 @@ export class IssueComponent implements OnInit, OnDestroy {
     this.ngbPaginationPage = this.page;
   }
 
-  search($event: any): void {}
+  search(event: any): void {
+    console.log('', event.args.item);
+  }
+
+  projectOnSelect(event: any): void {
+    console.log('', event.args.item.label);
+
+    // TODO 마일스톤 목록 조회
+  }
 }
