@@ -12,6 +12,8 @@ import { IssueService } from './issue.service';
 import { IssueDeleteDialogComponent } from './issue-delete-dialog.component';
 
 import { jqxButtonComponent } from 'jqwidgets-ng/jqxbuttons';
+import { ProjectService } from 'app/entities/project/project.service';
+import { IProject } from 'app/shared/model/project.model';
 
 @Component({
   selector: 'jhi-issue',
@@ -40,6 +42,7 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
 
   constructor(
     protected issueService: IssueService,
+    protected projectService: ProjectService,
     protected activatedRoute: ActivatedRoute,
     protected dataUtils: JhiDataUtils,
     protected router: Router,
@@ -69,6 +72,7 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
+      this.loadProjects();
     });
     this.registerChangeInIssues();
   }
@@ -136,5 +140,22 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
     console.log('', event.args.item.label);
 
     // TODO 마일스톤 목록 조회
+  }
+
+  private loadProjects(): void {
+    this.projectService
+      .query({
+        page: 0,
+        size: 100,
+        sort: ['name,asc']
+      })
+      .subscribe(
+        (res: HttpResponse<IProject[]>) => {
+          this.projects = res.body;
+        },
+        () => {
+          // TODO 에러 메시지를 표시해야 한다.
+        }
+      );
   }
 }
