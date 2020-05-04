@@ -133,13 +133,9 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
     this.ngbPaginationPage = this.page;
   }
 
-  search(event: any): void {
-    console.log('', event.args.item);
-  }
+  search(event: any): void {}
 
   projectOnSelect(event: any): void {
-    console.log('', event.args.item);
-
     this.milestoneService
       .query({
         projectId: event.args.item.value,
