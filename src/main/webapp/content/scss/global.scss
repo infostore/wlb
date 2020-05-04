@@ -164,3 +164,8 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+.jqx-widget-content,
+.jqx-fill-state-normal {
+  font-family: $font-family-sans-serif;
+}
