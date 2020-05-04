@@ -14,6 +14,8 @@ import { IssueDeleteDialogComponent } from './issue-delete-dialog.component';
 import { jqxButtonComponent } from 'jqwidgets-ng/jqxbuttons';
 import { ProjectService } from 'app/entities/project/project.service';
 import { IProject } from 'app/shared/model/project.model';
+import { IMilestone } from 'app/shared/model/milestone.model';
+import { MilestoneService } from 'app/entities/milestone/milestone.service';
 
 @Component({
   selector: 'jhi-issue',
@@ -35,14 +37,13 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('newButton')
   newButton!: jqxButtonComponent;
 
-  projects: any = [
-    { id: 0, name: 'first' },
-    { id: 1, name: 'second' }
-  ];
+  projects: IProject[] | null = [];
+  milestones: IMilestone[] | null = [];
 
   constructor(
     protected issueService: IssueService,
     protected projectService: ProjectService,
+    protected milestoneService: MilestoneService,
     protected activatedRoute: ActivatedRoute,
     protected dataUtils: JhiDataUtils,
     protected router: Router,
@@ -137,9 +138,23 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   projectOnSelect(event: any): void {
-    console.log('', event.args.item.label);
+    console.log('', event.args.item);
 
-    // TODO 마일스톤 목록 조회
+    this.milestoneService
+      .query({
+        projectId: event.args.item.value,
+        page: 0,
+        size: 100,
+        sort: ['name,asc']
+      })
+      .subscribe(
+        (res: HttpResponse<IMilestone[]>) => {
+          this.milestones = res.body;
+        },
+        () => {
+          // TODO 에러 메시지를 표시해야 한다.
+        }
+      );
   }
 
   private loadProjects(): void {
@@ -158,4 +173,6 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
         }
       );
   }
+
+  milestoneOnSelect(event: any): void {}
 }
