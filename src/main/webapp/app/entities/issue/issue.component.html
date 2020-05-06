@@ -13,34 +13,91 @@
     <div class="row">
         <div class="col-sm-2">
             <jqxComboBox (onSelect)="projectOnSelect($event)" [width]="'100%'"
-                         [height]="30" [selectedIndex]="0" [source]="projects" [displayMember]="'name'"
+                         [height]="30" [source]="projects" [displayMember]="'name'"
                          [valueMember]="'id'"
                          [placeHolder]="'Select Project'">
             </jqxComboBox>
         </div>
         <div class="col-sm-2">
-            <jqxComboBox (onSelect)="milestoneOnSelect($event)" [width]="'100%'"
-                         [height]="30" [selectedIndex]="0" [source]="milestones" [displayMember]="'name'"
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="milestones" [displayMember]="'name'"
                          [valueMember]="'id'"
                          [placeHolder]="'Select Milestone'">
             </jqxComboBox>
         </div>
         <!-- IssueType -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="issueTypes" [displayMember]="'name'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Issue Type'">
+            </jqxComboBox>
+        </div>
         <!-- Priority -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="priorities" [displayMember]="'name'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Priority'">
+            </jqxComboBox>
+        </div>
         <!-- IssueStatus -->
-        <!-- IssueResolution -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="issueStatuses" [displayMember]="'name'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Status'">
+            </jqxComboBox>
+        </div>
+        <!-- Resolution -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="resolutions" [displayMember]="'name'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Resolution'">
+            </jqxComboBox>
+        </div>
         <!-- Assignee -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="users" [displayMember]="'login'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Assignee'">
+            </jqxComboBox>
+        </div>
+        <!-- Watcher -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="users" [displayMember]="'login'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Watcher'">
+            </jqxComboBox>
+        </div>
+        <!-- Writer -->
+        <div class="col-sm-2">
+            <jqxComboBox [width]="'100%'"
+                         [height]="30" [source]="users" [displayMember]="'login'"
+                         [valueMember]="'id'"
+                         [placeHolder]="'Select Writer'">
+            </jqxComboBox>
+        </div>
     </div>
 
-    <div class="row float-right">
-        <jqxButton #newButton [template]="'primary'" [width]="120" [routerLink]="['/issue/new']">
-            <fa-icon icon="plus"></fa-icon>
-            New
-        </jqxButton>
-        <jqxButton #searchButton [template]="'success'" [width]="120" (onClick)="search($event)">
-            <fa-icon icon="search"></fa-icon>
-            Search
-        </jqxButton>
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+        <div class="col-sm-1">
+            <jqxButton #newButton [template]="'primary'" [width]="120" [routerLink]="['/issue/new']">
+                <fa-icon icon="plus"></fa-icon>
+                New
+            </jqxButton>
+        </div>
+        <div class="col-sm-1">
+            <jqxButton #searchButton [template]="'success'" [width]="120" (onClick)="search($event)">
+                <fa-icon icon="search"></fa-icon>
+                Search
+            </jqxButton>
+        </div>
     </div>
 
     <jhi-alert-error></jhi-alert-error>

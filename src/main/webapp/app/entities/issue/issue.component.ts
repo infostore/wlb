@@ -16,6 +16,8 @@ import { ProjectService } from 'app/entities/project/project.service';
 import { IProject } from 'app/shared/model/project.model';
 import { IMilestone } from 'app/shared/model/milestone.model';
 import { MilestoneService } from 'app/entities/milestone/milestone.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-issue',
@@ -39,10 +41,34 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
 
   projects: IProject[] | null = [];
   milestones: IMilestone[] | null = [];
+  issueTypes: any[] = [
+    { id: 'BUG', name: 'BUG' },
+    { id: 'ISSUE', name: 'ISSUE' },
+    { id: 'TASK', name: 'TASK' }
+  ];
+  priorities: any[] = [
+    { id: 'HIGHEST', name: 'HIGHEST' },
+    { id: 'HIGH', name: 'HIGH' },
+    { id: 'MEDIUM', name: 'MEDIUM' },
+    { id: 'LOW', name: 'LOW' },
+    { id: 'LOWEST', name: 'LOWEST' }
+  ];
+  issueStatuses: any[] = [
+    { id: 'NEW', name: 'NEW' },
+    { id: 'OPEN', name: 'OPEN' },
+    { id: 'CLOSED', name: 'CLOSED' }
+  ];
+  resolutions: any[] = [
+    { id: 'DONE', name: 'DONE' },
+    { id: 'DUPLICATE', name: 'DUPLICATE' },
+    { id: 'REJECT', name: 'REJECT' }
+  ];
+  users: IUser[] | null = [];
 
   constructor(
     protected issueService: IssueService,
     protected projectService: ProjectService,
+    protected userService: UserService,
     protected milestoneService: MilestoneService,
     protected activatedRoute: ActivatedRoute,
     protected dataUtils: JhiDataUtils,
@@ -74,6 +100,7 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
       this.loadProjects();
+      this.loadUsers();
     });
     this.registerChangeInIssues();
   }
@@ -170,5 +197,20 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
       );
   }
 
-  milestoneOnSelect(event: any): void {}
+  private loadUsers(): void {
+    this.userService
+      .query({
+        page: 0,
+        size: 100,
+        sort: ['login,asc']
+      })
+      .subscribe(
+        (res: HttpResponse<IUser[]>) => {
+          this.users = res.body;
+        },
+        () => {
+          // TODO 에러 메시지를 표시해야 한다.
+        }
+      );
+  }
 }
