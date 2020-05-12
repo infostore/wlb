@@ -169,3 +169,8 @@ ui bootstrap tweaks
 .jqx-fill-state-normal {
   font-family: $font-family-sans-serif;
 }
+
+body .ui-widget {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+}

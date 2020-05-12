@@ -13,6 +13,8 @@
     }
   },
   "dependencies": {
+    "@angular/animations": "^9.1.6",
+    "@angular/cdk": "^9.2.3",
     "@angular/common": "9.0.4",
     "@angular/compiler": "9.0.4",
     "@angular/core": "9.0.4",
@@ -37,6 +39,8 @@
     "ngx-infinite-scroll": "8.0.1",
     "ngx-summernote": "^0.7.7",
     "ngx-webstorage": "5.0.0",
+    "primeicons": "^3.0.0-rc.1",
+    "primeng": "^9.0.6",
     "rxjs": "6.5.3",
     "sockjs-client": "1.4.0",
     "summernote": "^0.8.16",

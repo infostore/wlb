@@ -10,6 +10,7 @@ import { NgxSummernoteModule } from 'ngx-summernote';
 
 import { jqxButtonModule } from 'jqwidgets-ng/jqxbuttons';
 import { jqxComboBoxModule } from 'jqwidgets-ng/jqxcombobox';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   exports: [
@@ -23,7 +24,8 @@ import { jqxComboBoxModule } from 'jqwidgets-ng/jqxcombobox';
     TranslateModule,
     NgxSummernoteModule,
     jqxButtonModule,
-    jqxComboBoxModule
+    jqxComboBoxModule,
+    DropdownModule
   ]
 })
 export class WlbSharedLibsModule {}

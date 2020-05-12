@@ -12,74 +12,38 @@
 
     <div class="row">
         <div class="col-sm-2">
-            <jqxComboBox (onSelect)="projectOnSelect($event)" [width]="'100%'"
-                         [height]="30" [source]="projects" [displayMember]="'name'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Project'">
-            </jqxComboBox>
+            <p-dropdown [options]="projects" [(ngModel)]="selectedProject" (onChange)="selectProject()" optionLabel="name" placeholder="Select Project"></p-dropdown>
         </div>
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="milestones" [displayMember]="'name'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Milestone'">
-            </jqxComboBox>
+            <p-dropdown [options]="milestones" [(ngModel)]="selectedMilestone" optionLabel="name" placeholder="Select Milestone"></p-dropdown>
         </div>
         <!-- IssueType -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="issueTypes" [displayMember]="'name'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Issue Type'">
-            </jqxComboBox>
+            <p-dropdown [options]="issueTypes" [(ngModel)]="selectedIssueType" optionLabel="name" placeholder="Select IssueType"></p-dropdown>
         </div>
         <!-- Priority -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="priorities" [displayMember]="'name'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Priority'">
-            </jqxComboBox>
+            <p-dropdown [options]="priorities" [(ngModel)]="selectedPriority" optionLabel="name" placeholder="Select Priority"></p-dropdown>
         </div>
         <!-- IssueStatus -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="issueStatuses" [displayMember]="'name'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Status'">
-            </jqxComboBox>
+            <p-dropdown [options]="issueStatuses" [(ngModel)]="selectedIssueStatus" optionLabel="name" placeholder="Select IssueStatus"></p-dropdown>
         </div>
         <!-- Resolution -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="resolutions" [displayMember]="'name'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Resolution'">
-            </jqxComboBox>
+            <p-dropdown [options]="resolutions" [(ngModel)]="selectedResolution" optionLabel="name" placeholder="Select Resolution"></p-dropdown>
         </div>
         <!-- Assignee -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="users" [displayMember]="'login'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Assignee'">
-            </jqxComboBox>
+            <p-dropdown [options]="users" [(ngModel)]="selectedAssignee" optionLabel="name" placeholder="Select Assignee"></p-dropdown>
         </div>
         <!-- Watcher -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="users" [displayMember]="'login'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Watcher'">
-            </jqxComboBox>
+            <p-dropdown [options]="users" [(ngModel)]="selectedWatcher" optionLabel="name" placeholder="Select Watcher"></p-dropdown>
         </div>
         <!-- Writer -->
         <div class="col-sm-2">
-            <jqxComboBox [width]="'100%'"
-                         [height]="30" [source]="users" [displayMember]="'login'"
-                         [valueMember]="'id'"
-                         [placeHolder]="'Select Writer'">
-            </jqxComboBox>
+            <p-dropdown [options]="users" [(ngModel)]="selectedAuthor" optionLabel="name" placeholder="Select Author"></p-dropdown>
         </div>
     </div>
 

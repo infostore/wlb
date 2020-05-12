@@ -18,6 +18,7 @@ import { IMilestone } from 'app/shared/model/milestone.model';
 import { MilestoneService } from 'app/entities/milestone/milestone.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IssueType } from 'app/shared/model/enumerations/issue-type.model';
 
 @Component({
   selector: 'jhi-issue',
@@ -65,6 +66,16 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
   ];
   users: IUser[] | null = [];
 
+  selectedProject: IProject | undefined;
+  selectedMilestone: IMilestone | undefined;
+  selectedIssueType: any;
+  selectedPriority: any;
+  selectedIssueStatus: any;
+  selectedResolution: any;
+  selectedAssignee: any;
+  selectedWatcher: any;
+  selectedAuthor: any;
+
   constructor(
     protected issueService: IssueService,
     protected projectService: ProjectService,
@@ -99,13 +110,14 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
-      this.loadProjects();
-      this.loadUsers();
     });
     this.registerChangeInIssues();
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.loadProjects();
+    this.loadUsers();
+  }
 
   ngOnDestroy(): void {
     if (this.eventSubscriber) {
@@ -162,10 +174,10 @@ export class IssueComponent implements AfterViewInit, OnInit, OnDestroy {
 
   search(event: any): void {}
 
-  projectOnSelect(event: any): void {
+  selectProject(): void {
     this.milestoneService
       .query({
-        projectId: event.args.item.value,
+        projectId: this.selectedProject?.id,
         page: 0,
         size: 100,
         sort: ['name,asc']
